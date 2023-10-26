@@ -1,0 +1,370 @@
+\chapter{Literature Review} \label{chap:litrev}
+%\begin{center}
+%	============ [below is old] ===============
+%\end{center}
+
+\section{Related Work}
+%\subsection{Handling Missing Data}(move to prelim if needed)
+%Many works investigated methods to deal with this problem.
+%In addition to statistical imputation, some work developed new methods in machine learning approaches to impute missing data.
+%For example, Samad and Harp dealt with missing values by self-organizing map (SOM) \cite{SOM}.
+%Many works use multi-layer perceptron (MLP), for example, \cite{MLP,MLP3,MLP2}.
+%Moreover, there are also works using deep learning approaches, for example, \cite{GAIN, GRAPE}.
+%However, there also are works dealing with this problem by avoiding imputation.
+%They try to learn a representation of data instead of imputation.
+%These works are based on the hypothesis that missingness should be informative, and imputation is the method that ignores uncertainties in missing data.
+%
+%content...
+
+\subsection{Graph Neural Networks for Tabular Data}
+GNNs have been applied to diverse types of tabular data, including healthcare \cite{Mao2019} and financial data  \cite{Seo2018}. Their ability to model complex interactions and dependencies between variables \cite{Zhang2018, Monti2018} and handle missing values \cite{GRAPE} make them advantageous for tabular data analysis. However, designing GNNs for tabular data requires careful consideration of factors such as graph structure and feature engineering \cite{Hu2019}. The graph structure should reflect the relationships between variables, while feature engineering should effectively transform input features into graph structures suitable for GNN models.
+
+content...
+
+\subsection{Graph Neural Networks for Missing Data}
+content...
+
+%\begin{enumerate}[label=(\Roman*)]
+%	\item What is missing issue
+%	\item Why is it significant
+%	\item way to handle
+%\end{enumerate}
+
+\section*{*****************************log*****************************}
+
+
+%As aforementioned, we can categorize the methods of handling missing data into two groups.
+%The first group is imputation before using, and the second group is learning representation of
+%data by deep learning. We argue that excluding ease of usage and low resource consumption
+%imputation is inappropriate because it is impossible to fill the correct values. Therefore, learning
+%the representation of data is a fascinating method. Moreover, this method is successful in many
+%domains of machine learning.
+
+
+
+Missing data is significant because it can lead to biased model performance and inaccurate predictions. Handling missing data can be done through various methods such as statistical imputation, machine learning-based imputation, and deep learning-based imputation. Statistical methods such as mean imputation, regression imputation, and hot-deck imputation assume that the missing values follow a certain statistical distribution, but they might not be accurate if the missing values are not random. Machine learning methods like k-nearest neighbor (KNN) imputation \cite{missingDNA} and decision tree-based imputation \cite{missingTree} can be effective when the missing values have some patterns, but they might not work well if the missingness is too extensive. Deep learning methods such as autoencoders \cite{missingAutoen} and Generative Adversarial Networks (GANs) \cite{GAIN} can be used to impute missing values, but they require a large amount of training data and computational resources, and their performance might not be better than simpler imputation methods \cite{Garcia}.
+
+However, A limitation of imputation methods is that they assume that the missing values can be imputed based on the observed values and other relevant variables. However, in practice, we may not know the exact values of the missing data, and imputing them may introduce errors and bias in the analysis. Moreover, in some cases, the missing data itself may be informative, and imputing them may lead to loss of information. Therefore, it is important to carefully consider the nature of missing data and the suitability of different imputation methods before making any assumptions or decisions.
+
+Recent research has shown that deep learning techniques can also be applied to handle missing data. One such approach is GAIN \cite{GAIN}, proposed by J. Yoon et al. in 2018, which utilizes Generative Adversarial Nets (GANs) to generate plausible values for missing data based on the observed data. Another study by M. Smieja et al. \cite{Smieja} in 2019 also explored the use of neural networks for processing missing data, where a deep network was used to predict data containing missing values based on the observed values without imputation. In 2020, Ghorbani et al. \cite{Ghorbani} proposed a novel method called Embedding for Informative Missingness (EFIM), which uses a deep learning model to learn embeddings of the missing values that preserve their informativeness. The embeddings are then used to predict the corresponding label of input via the model that is learned together with the embedding. These recent studies suggest that deep learning-based methods can be effective for handling missing data, but they still ignore the dependencies of features on missing values.
+
+In this work, we aim to develop a framework for handling missing data that does not rely on explicit imputation. Specifically, we want to design a model that can predict the label of a given data point even if some of its features are missing, without necessarily imputing the missing values. If necessary, the model should also be able to reconstruct the missing parts of the input based on the other nonmissing features. Our proposed approach will leverage deep learning techniques to capture the complex relationships between the input features and the label, as well as the dependencies between the missing and nonmissing features. By doing so, we hope to provide a more accurate and robust solution to the missing data problem, while also preserving the integrity of the original data.
+
+
+
+
+%\section{Deep Learning for Tabular Data}
+%\begin{enumerate}[label=(\Roman*)]
+%	\item Challenges of deep learning for tabular data:
+%%	\begin{enumerate}[label=\arabic*.]
+	%%		\item Missing data
+	%%		\item Feature interaction
+	%%		\item Feature selection
+	%%	\end{enumerate}
+%
+%			Deep learning models have shown amazingly success in many fields such as image and text, but they still underperform compared to tree-based models in tabular data analysis. \cite{Grinsztajn}
+%			One of the major challenges in deep learning for tabular data is the presence of missing data, as many real-world datasets often have incomplete data, which can affect model performance.
+%			Feature interaction is another challenge, as deep learning models struggle to capture complex interactions between features, which can lead to poor model performance.
+%			Finally, feature selection is an important consideration, as deep learning models tend to perform poorly with a large number of features, and selecting the most relevant features can significantly improve model performance.
+%			Not only what I have mentioned, but also high-dimension, heterogeneity, imbalanced data and limitation of interpretability are challenges for deep learning of tabular data.
+%	\item Recent advances in deep learning for tabular data:
+%	
+%			Recent advances in deep learning for tabular data have shown promising results in various real-world applications. One approach is to use neural networks with architectures specifically designed for tabular data such as the TabNet and AutoInt models (Su et al., 2020; Liang et al., 2020).
+%			Another approach is to incorporate graph neural networks (GNNs) to capture feature interactions and handle missing data, such as the work by Chen et al. (2021) and Huang et al. (2021).
+%			However, these methods still face challenges such as the curse of dimensionality and the need for effective feature selection and preprocessing techniques (Guo et al., 2021; Yuan et al., 2021).
+%			Overall, the recent advances in deep learning for tabular data show great potential, but further research is needed to address the challenges and improve the performance of these models in real-world scenarios.
+%			
+%	\item Comparison of deep learning and traditional machine learning for tabular data in performance:
+%	
+%			Numerous studies have compared the performance of deep learning and traditional machine learning methods for tabular data. Some studies found that deep learning models outperform traditional machine learning models on certain datasets, such as those with high-dimensional and complex features, while others found that traditional machine learning models perform better on datasets with small to medium-sized features. For example, Wang et al. (2019) found that deep learning models outperformed traditional machine learning models on a dataset with high-dimensional features. In contrast, other studies, such as Wang et al. (2018) and Johnson et al. (2019), found that traditional machine learning models, such as random forests and gradient boosting machines, outperformed deep learning models on certain tabular datasets. Despite these mixed results, it is clear that both deep learning and traditional machine learning methods have their strengths and weaknesses when it comes to tabular data analysis, and the choice of method should depend on the specific characteristics of the dataset and the research question at hand.
+%\end{enumerate}
+According to Grinsztajn (2022) \cite{Grinsztajn}, deep learning models have generally not performed as well as traditional machine learning models, particularly tree-based models, in tabular data analysis.
+As discussed in the previous section, there are several challenges that contribute to this underperformance.
+Recent advances in deep learning for tabular data have incorporated neural networks with architectures specifically designed for tabular data, TabNet \cite{Tabnet} for example.
+Some work attempts to capture feature interactions \cite{Table2Graph} which is simply an operation among two or more features with respect to the output variable such as multiplication between two features, and handle missing data \cite{GRAPE}. 
+However, these methods can be computationally expensive.
+Table2Graph, for instance, uses a reinforcement learning approach that requires significant amounts of data and computation power to address feature interactions. GRAPE, on the other hand, models a table of data as a graph to handle missing data but does not address feature interactions.
+
+Numerous studies have compared the performance of deep learning and traditional machine learning methods for tabular data. Some studies found that deep learning models outperform traditional machine learning models on certain datasets, such as those with high-dimensional and complex features, while others found that traditional machine learning models perform better on datasets with small to medium-sized features. For example, Ching et al. (2018) \cite{Ching2018} found that deep learning models outperformed traditional machine learning models on a dataset with high-dimensional features.
+In contrast, other studies, such as Grinsztajn et al. (2022) \cite{Grinsztajn}, Olson et al. (2018) \cite{Olson2018}, and Fernández et al. (2014) \cite{Fernández} found that traditional machine learning models, such as random forests and gradient boosting machines, outperformed deep learning models on certain tabular datasets. Despite these mixed results, it is clear that both deep learning and traditional machine learning methods have their strengths and weaknesses when it comes to tabular data analysis, and the choice of method should depend on the specific characteristics of the dataset and the research question at hand.
+
+
+%\subsection{Graph Neural Network}
+%
+%\section{Related Work}
+%\subsection{Graph Neural Networks in Tabular Data Analysis}
+%\begin{enumerate}[label=(\Roman*)]
+%	\item Previous research on using GNNs in tabular data analysis
+%	\item Advantages of using GNNs in tabular data analysis
+%	\item Design considerations for GNNs in tabular data analysis
+%\end{enumerate}
+%	Before delving into the potential of Graph Neural Networks (GNNs) in modeling tabular data, it is important to understand the limitations of traditional machine learning models. Tabular data often consists of structured and semi-structured data with complex dependencies among the features. This complexity can be difficult to capture with traditional models, especially when the data is high-dimensional or has missing values. While deep learning models have shown great success in modeling complex data such as images and text, they have struggled to achieve similar results with tabular data due to the lack of inherent structure and the difficulty of learning meaningful representations. In recent years, however, GNNs have emerged as a promising approach for modeling structured and semi-structured data, such as social networks, molecular structures, and knowledge graphs. GNNs have been shown to be effective in capturing complex dependencies among nodes and edges, and have demonstrated superior performance compared to traditional methods in various applications. Therefore, exploring the potential of GNNs in modeling tabular data could pave the way for more accurate and interpretable models, as well as new insights into the relationships between features in the data.
+%	
+%	GNNs are a class of neural networks that can learn representations of nodes and edges in a graph, even representations of graphs, which allows them to capture the structural information of the graph in the forms of message passing.
+%	One of the key advantages of GNNs is their ability to learn the relations between nodes in a graph, which enables them to model complex interactions between the nodes (Kipf \& Welling, 2017) \cite{...}.
+%	This is particularly useful in many real-world applications such as social network analysis, recommendation systems, and drug discovery.
+%	Moreover, GNNs have shown superior performance compared to traditional machine learning models and deep learning models in many graph-related tasks.
+%	They can handle large-scale graphs efficiently and provide a better representation of the graph structure, which allows them to achieve better results in many graph-related tasks such as node classification, link prediction, and graph classification (Wu et al., 2020) \cite{...}.
+%	Moreover, the assumptions on which GNNs rely are weaker than what traditional machine learning and deep learning need, such as independence of data points \cite{...}.
+%	The advantages of GNNs make them a promising area of research in the field of machine learning and graph analysis.
+%
+%	Besides the tasks whose data is explicitly in the forms of graphs, such as networks or molecules, recent studies have explored the potential of using Graph Neural Networks (GNNs) in tabular data analysis.
+%	GNNs have been applied to various types of tabular data, such as healthcare data (Choi et al., 2020; Shang et al., 2019) \cite{...} and financial data (Wang et al., 2021) \cite{...}.
+%	These studies have demonstrated the effectiveness of GNNs in capturing complex relational information in tabular data that cannot be easily captured by traditional machine learning models.
+%	One of the main advantages of using GNNs in tabular data analysis is that they can capture complex interactions and dependencies between different variables in the dataset.
+%	Moreover, GNNs can handle missing values, which is a common challenge in tabular data analysis (Wu et al., 2021).
+%	However, designing GNNs for tabular data analysis requires careful consideration of several factors, such as the choice of graph structure and feature engineering (Yin et al., 2020).
+%	For instance, the graph structure should reflect the relationships between variables in the dataset and feature engineering should ensure that the input features can be effectively transformed into graph structures that can be processed by the GNN model.
+%	Overall, the research on using GNNs in tabular data analysis suggests that GNNs hold promise as a powerful tool for handling complex tabular data and would  be explored further in this research.
+
+
+
+%\subsection{Missing Data Handling with GNNs}
+%\begin{enumerate}[label=(\Roman*)]
+%	\item 
+%	\item 
+%	\item 
+%\end{enumerate}
+
+%	Graph representation learning has recently emerged as a promising approach for handling missing data, which is the main goal of this work.
+%	One notable work in this area is GRAPE, proposed by You et al. in 2020 \cite{...}.
+%	GRAPE is a framework utilizing GNNs for feature imputation and label prediction with missing data.
+%	It constructs a bipartite graph from the data matrix, where samples and features are two types of nodes and observed values corresponding to each sample and each feature are attributed edges.
+%	It then formulates the feature imputation as an edge-level prediction task and the label prediction as a node-level prediction task.
+%	
+%	Danel et al. (2020) \cite{...} also proposed another related work handling missing issue, but in image, to process incomplete images as graphs, where each node is a visible pixel and each edge connects neighboring pixels.
+%	The graphs are then fed to a spatial graph convolutional neural network (SGCN), which can mimic image convolutions and handle missing data without imputation.
+%	However, it only considers spatial graph convolutions, which are based on the Euclidean distance between nodes. There may be other types of graph convolutions that can capture more complex relationships between pixels, such as spectral graph convolutions or attention-based graph convolutions. These methods may offer more flexibility and expressiveness for processing incomplete images.
+%	
+%	These approaches have several advantages over traditional imputation methods, as it does not require making assumptions about the missing values and can handle complex dependencies among the features and missing data.
+%	Moreover, the learned node representation or graph representation can be used for downstream analysis without imputing the missing values, which may lead to more accurate and interpretable results. However, there are still challenges in applying GNNs to handle missing data, such as the choice of graph construction method, the selection of appropriate GNN architectures, and the evaluation of their performance under different missing data scenarios.
+
+Graph representation learning has emerged as a promising approach for handling missing data. Notably, You et al. (2020) \cite{GRAPE} proposed GRAPE, a framework utilizing GNNs for feature imputation and label prediction with missing data. GRAPE constructs a bipartite graph from the data matrix and formulates feature imputation as an edge-level prediction task and label prediction as a node-level prediction task.
+
+Danel et al. (2020) \cite{Danel2020} presented an approach for processing incomplete images as graphs, employing a spatial graph convolutional neural network (SGCN) to handle missing data without imputation. However, this method only considers spatial graph convolutions based on Euclidean distance, which may limit its ability to capture complex relationships between pixels. Alternative graph convolutions, such as spectral or attention-based, could offer greater flexibility and expressiveness.
+
+GNN-based approaches for handling missing data have advantages over traditional imputation methods, as they do not rely on assumptions about missing values and can capture complex dependencies between features and missing data. Furthermore, the learned node or graph representations can be used for downstream analysis without imputing missing values, potentially leading to more accurate and interpretable results. Nevertheless, challenges remain in applying GNNs to handle missing data, including selecting appropriate graph construction methods, and GNN architectures, and evaluating their performance under various missing data scenarios.
+
+%\subsubsection*{Feature Interaction Modeling with GNNs}
+%	In tabular data analysis, feature interaction refers to the relationship between two or more features in the dataset. This relationship can be linear or nonlinear, such as bilinear, and may have a significant impact on the predictive power of a model. Understanding feature interactions is crucial for building accurate models and making informed decisions \cite{...}.
+%	Feature interaction is significant in tabular data analysis because they help improve the performance and interpretability of models. By identifying and understanding feature interactions, analysts can build more accurate models and make better predictions. Similarly, by selecting the most relevant features, analysts can simplify the model and reduce computational complexity, which can lead to faster and more efficient analysis. Overall, feature interaction and feature selection are essential tools for making sense of complex tabular data and improving the accuracy and interpretability of predictive models.
+
+\section{Preliminary}
+\paragraphHead{Wrap-up 2 things and Missing data in tabular}
+There are two major objects discussed in introduction chapter: (1) missing values and (2) GNNs.
+This work addresses the problem of missing values in tabular data by the use of GNNs.
+
+In this section, we will give you more precise details of missing data and GNNs.
+Let us first introduce the formal notion of tabular data.
+We denote a table of data by $T \in \R^{m\times n}$ for the table of data of $m$ samples and $n$ features.
+When we refer to the $i$th instance, which is in the row $i$th, we use $T_{i:}$.
+
+%\paragraphHead{Missing data in tabular}
+%Next, missing data is one of the challenges in learning predictive model for tabular data.
+%It is the scenario that some feature values of a sample (row) is absence by some reason such as quality of measuring equipment or dependency from value of other features.
+%It can lead to biased model performance and inaccurate predictions.
+%It can be a problem not only in tabular data but also in different data types as well such as image or time series.
+%However, this work concentrates only tabular data.
+%Since they are a data structure with high variability of data types and format, they possibly ambiguous and low quality due to missing values \cite{...}.
+%Not like an image, a small proportion of missing values in images may not significantly impact classification learning.
+%
+%\paragraphHead{GNNs for missing data in tabular data}
+%And the last main character is graph neural networks, which is a deep neural based framework designed for graph data structures.
+%It can be seen as a generalization of traditional multilayer perceptron which nodes of graph are grouped into each level or layer where each node (neuron) in one layer is connected to every node in the adjacent layers with independent weights for edges \cite{wilHamil}.
+%GNNs are used to process graph data which may contains high level of prescribed dependency, in other words, not independent and identical distributed which is often used to be an assumption for almost machine learning algorithm.
+%Moreover, values in tabular data, which is heterogeneous, may not independent, and also missing values as well.
+%Transforming them to be graphs and using GNNs might be an interesting methods to be explored.
+
+\subsection{Missing Data}
+Missing data is the scenario that some feature values of a sample is absence by some reason such as quality of measuring equipment or dependency from value of other features.
+For example in clinical scenario, some features values of a patient may not be determined, even cannot, due to the gender of the observed patient.
+It can be classified into four categories \cite{Rubin, MCM}: completely at random (MCAR), missing at random (MAR), missing not at random (MNAR), and mixed confounded missingness (MCM).
+
+\subsubsection{Missing Values Mechanisms}
+According to \cite{Rubin}, Missingness can be categorized by dependency of missing features into 3 mechanisms: MCAR, MAR, MNAR, and MCM.
+
+\paragraph{MCAR} means that the missingness is random and has no relationship with the values of other variables in the dataset. For example, if we collect height data for a random sample of individuals, and some of them are absent from the data due to equipment malfunction, then the missingness is MCAR. In this case, the missing data can be safely ignored in statistical analysis without introducing bias.
+
+\paragraph{MAR} means that the missingness is not random but can be explained by other variables in the dataset. For example, in a study of school performance, some students may not complete a survey on mental health due to embarrassment or discomfort, and their absence can be explained by their mental health status. In this case, the missing data are MAR, and ignoring it may lead to biased results. Therefore, imputation methods can be used to estimate the missing values based on the observed values and other relevant variables.
+
+\paragraph{MNAR} means that the missingness is not random and cannot be explained by other variables in the dataset. For example, in a study of employee salaries, some high-income earners may refuse to report their salaries, and their absence is related to the variable of interest but not to other variables in the dataset. In this case, ignoring the missing data may lead to biased results, and imputation methods may not be effective since the missing values are not predictable.
+
+\paragraph{MCM} means paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph 
+
+Here is a formal definition of missingness mechanism provided in \cite{...}.
+\begin{defi}\label{missingMech}
+	For precise describing, define the complete data matrix $ X=(x_{ij}) $ and the missingness indicator matrix $ M=(m_{ij}) $ where $ m_{ij}=1 $ if $ x_{ij} $ is missing and $ m_{ij}=0 $ if $ x_{ij} $ is observed.
+	Assume that the rows $ (x_i) $ and $ (m_i) $ are independent and identically distributed over $ i $.
+	The missingness mechanism is characterized by the conditional distribution of $ m_i $ given $ x_i $, say $ f_{M|X}(m_i|x_i,\phi) $, where $ \phi $ denotes unknown parameters.
+	Let $ x_{(1)i} $ denote the components of $ x_i $ that are missing for unit $ i $.
+	\begin{enumerate}
+		\item \textbf{Missing Completely at Random} (MCAR) is the missing mechanism that missingness does not depend on the values of the data, missing or observed.
+		That is, if for all $ i $ and any distinct values $ x_i,x_i^* $ in the sample space of $ X $, $$ f_{M|X}(m_i|x_i,\phi)=f_{M|X}(m_i|x_i^*,\phi). $$
+		\item \textbf{Missing at Random} (MAR) is the missingness mechanism that missingness depends on $ x_i $ only through the observed components $ x_{(0)i} $.
+		Specifically, if for all $ i $ and any distinct values $ (x_{(1)i},x_{(1)i}^*) $ of the missing components in the sample space of $ x_{(1)i} $,
+		\begin{align*}
+			f_{M|X}(m_i|x_{(0)i},&x_{(1)i},\phi)
+			=f_{M|X}(m_i|x_{(0)i},x_{(1)i}^*,\phi).
+		\end{align*} 
+		\item \textbf{Missing not at Random} (MNAR) is the missing mechanism that the distribution of $ m_i $ depends on the missing components of $ x_i $.
+	\end{enumerate}
+\end{defi}
+
+And then, in 2023, Berrevoets et al. \cite{MCM} proposed the new mechanisms .......................................
+\begin{defi}[Mixed Confounded Missingness]
+	content...
+\end{defi}
+
+\subsubsection{Patterns of Missing Data}\label{pattern}
+There are many interesting patterns of missingness often met in real-world scenario.
+In this subsection, we explain these patterns of missing data and give some examples.
+And we still use the same notions from Definition \ref{missingMech}.
+
+\begin{enumerate}
+	\item \textbf{Univariate:} It is the case that missing data occurs only in a single variable.
+	Specifically, let $j^*$ be a fixed index of feature. 
+	We say the pattern of missing data is univariate if $j = j^*$ is a necessary condition of $M_{ij} = 1$.
+	For example, 
+	paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph
+	
+	\item \textbf{Multivariate:} paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph
+	
+	\item \textbf{Monotone:} 
+		
+	\item \textbf{Disjoint:} Two subsets of variables never observed together.
+		
+	\item \textbf{Latent:} A certain variable is never observed. Maybe it is even unobservable.
+\end{enumerate}
+
+\subsubsection{Traditional Methods to Handling Missing Values}
+There are many traditional methods to handle missing data varying from selection of only complete data to completion of incomplete values.
+
+\paragraphHead{Deletion}
+The easiest way to handle this issue is keeping of only complete data.
+It seems to be the most practical way if we have sufficiently large enough complete data.
+It is obvious that we cannot use this method if the original data is incomplete because of its own nature 
+
+\paragraphHead{Imputation: the most basic solution}
+How will it be if the casewise deletion does not work because of limited size of data or the nature of data itself? 
+One of the simple ways is imputation of these missing values.
+There are many methods of imputation varying from basic imputation by constant value or value of distribution \cite{...} to model-based imputation by learning machine learning model \cite{...}.
+
+However, these imputation may not reflect the actual dataset. \cite{...}
+Actually, we do not even know the actual dataset.
+In addition, some missing behavior is also itself informative \cite{...} such as unrating the product from a customer which may mean dissatisfaction but the customer avoids giving a reason directly.
+So imputation seems that we do not concern the hidden information about missing data.
+Moreover, Ma, et al. (2018) \cite{Ma} commented that the imputation method ignores uncertainties of data which means as the same as hidden information said earlier.
+
+\paragraphHead{More a bit Imputation but with learning from data}
+Not only basic imputation methods, as aforementioned, but many work also investigated imputation based methods by learning from data.
+However, it still relies on the assumption that all missing values can be replaced as a number.
+But not all missing scenario can be imputed, for example, unrating the product.
+Also the case of some non measurable feature depending on others, the value 0 and a missing value are not equivalent.
+Moreover, these methods is independent from the learning process.
+In other words, the same model may be lead to different way by different imputation methods.
+The only way is to cross test all possible imputation methods to see whether which method is the best one for the desired model.
+This still requires much effort and time-consumption in the process of feature engineering.
+
+
+\subsubsection{Feature Interactions: the missing issue perspective}
+There is the another challenge in modeling tabular data which is not trivial related to missing issue.
+It is the scenario when two or more features have common influence to prediction, not only independent influence of each feature.
+For example, ..........................................
+However, it can be considered as latent missing values as described in Subsection \ref{pattern} because it is unobservable.
+
+
+
+
+
+
+\subsection{Graph Neural Network}
+As aforementioned in introduction chapter, to address missing data issue we want a framework that are flexible in validity or presence of feature values.
+In other words, how the model computes should be independent from the number of appearing values. 
+Here, one of the efficient approaches that might fill this gap is to represent data by graphs and to use graph neural networks (GNNs).
+
+Graph Neural Networks (GNNs) have emerged as a promising approach for modeling structured and semi-structured data, such as social networks \cite{Zhang2019}, molecular structures \cite{Gilmer2017}, and knowledge graphs \cite{Schlichtkrull}. Traditional machine learning models often struggle to capture the complex dependencies in tabular data, particularly when dealing with high-dimensional or incomplete datasets. GNNs, however, have demonstrated superior performance in various applications, as they effectively capture complex dependencies among nodes and edges in a graph \cite[Kipf \& Welling 2017]{GCN}.
+
+\subsubsection{Traditional Deep Learning}
+Before going deep further to detail of GNNs, let us introduce the broad definition of deep learning which is the fundamental idea of GNNs. After explaining these, we then move to the often-used layers for GNNs called message passing and graph pooling.
+
+Besides traditional machine learning model like linear regression, k-nearest neighborhood, or decision tree, there is a model that is designed based on the computation of neural objects, called neuron, connecting together in the forms of network.
+
+The neuron is a unit that mimics a biological neuron, consisting of an input (incoming signal), weights (synaptic weights) and activation function (neuron firing model).
+It was proposed due to the problem of nonlinear separable such as XOR problem.
+It can be defined formally as follows:
+
+\begin{defi}[Neuron]
+	A neuron is a quadruple $(\vec{x}, \vec{w}, \phi, y)$ where $\vec{x}^T = (x_0,\dots,x_n)$ is the input vector, $\vec{w}^T = (w_0,\dots, w_n)$ is the weights vector (in learning algorithm, they are called parameters), with $x_0=-1$ and $w_0=b$, the bias, and $\phi$ is an activation function that defines the outcome function $y=\phi(\vec{x}^T\vec{w})$.
+\end{defi}
+
+\noindent Some neuron may be called with a specific name depending on the activation function $\phi$ inside itself.
+For example, if a neuron consists of the Heaviside function as activation, it is called a perceptron.
+And if it consists of logistic function, then it is said to be a sigmoid neuron.
+
+Rather than models of a single neuron, some models is constructed from composition of many nodes whose outputs are fed into other layers of neurons.
+These models are called \textbf{neural networks} which is the base construction of deep learning models.
+It is defined formally as follows:
+
+\begin{defi}[Neural Networks]
+	Let us use the notations as follows:
+	\begin{align*}
+		\vec{x}^{(l)} &= (x_1^{(l)},\dots,x_{d^l}^{(l)})^T\\
+		W^{(l)} &= (w_{ij}^{(l)})_{i,j}\\
+		\vec{B}^{(l)} &= (b_1^{(l)},\dots,b_{d^l}^{(l)})^T
+%		\delta^{(l)} &= (\delta_1^{(l)},\dots,\delta_{d^l}^{(l)})^T\\
+%		s^{(l)} &= (s_1^{(l)},\dots,s_{d^l}^{(l)})^T\\
+%		x^{(L)} &= (x_1^{(L)},\dots,x_{d^L}^{(L)})^T
+	\end{align*}
+	and the convention that $\phi$ acts on each entries of its vector arguments as
+	$$
+	\phi ((x_1,\dots,x_d)) := (\phi(x_1), \dots, \phi(x_d))
+	$$
+	A (feedforward) \textbf{neural network} model consisting of $L$ hidden layers is an operation defined as
+	$$
+	\vec{x}^{(l)}=\phi\left({W^{(l)}}^T\vec{x}^{(l-1)} - \vec{B}^{(l)}\right)
+	$$
+	for $l = 1,2,\dots,L$.
+\end{defi}
+
+Note that, in this section, we describe only how they compute; i.e. the models.
+It is not how to learn their parameters which is an optimization problem or learning algorithm, including cost function, backpropagation, or gradient descent.
+For eager readers, these topics can be found in any textbooks about deep learning \cite{...}.
+
+Deep learning is about how to design the architecture of construction from such neurons for each specific task from the input to the corresponding output.
+In other words, it is about concatenation of hidden layers of neurons.
+There are many well-known sample architecture in various domains such as recurrent neural networks (RNNs) \cite{...} in sequential data structure like time series, convolution neural networks (CNNs) \cite{...} for image processing, and transformers \cite{...} for language.
+
+
+\subsubsection{Traditional Deep Learning towards GNNs}
+From the design of deep learning in the previous subsection, we see that deep learning models are designed in the perspective of grid data structure, i.e. Euclidean data structure.
+It relies on how we represent the inputs in the format of vectors or matrices.
+In image and text, they are still obvious to be a grid format.
+However, many data in real-world are not.
+For example, the relationship between people is data that is not trivial in how to represent by grid forms like vectors or matrices.
+
+The example the we illustrated above is a sample for the format called graph data structure.
+What if we want to use a deep learning model to learn the information in graph data structure?
+We may use any traditional deep learning model by using an adjacency matrix of the input graph like images.
+However, in order to form an adjacency matrix, we must give a specific order of nodes which can be permuted $n!$ matrices to represent the same graph (see Figure \ref{permGraph}).
+We want models that can consider all permuted adjacency matrices as the same input and always yield the same output independently from the permutation of nodes.
+This is called ``permutation invariant'' on graph data structures. It can be defined mathematically as follows:
+
+\begin{defi}
+	Let $\mathcal{F}$ be a corresponding function of a given model.
+	Let $G = (V,E)$ be any graph with a node set $V$ and an edge set $E$.
+	Let $A_1$ and $A_2$ be any two adjacency matrices for the graph $G$, i.e. there is a permutation matrix $P$ so that $PA_1P^T = A_2 $.
+	We say that the given model computing on graphs is permutation invariant on graphs if $\mathcal{F}(A_1) = \mathcal{F}(A_2)$.
+	We can say in other words that $\mathcal{F}(A_1) = \mathcal{F}(PA_1P^T)$ for any permutation matrix $P$.
+\end{defi}
+
+Intuitively, traditional NNs even more advanced architecture like CNNs are not permutation invariant. So the field of research of models that can process graph data structures in the fashion of permutation invariant emerged. And graph neural networks is a popular one that is often used.
+
+Graph neural networks (GNNs) are a class of neural based models designed for graph data structures to maintain permutation invariant.
+There are many ideas of design of such architectures, but the most popular idea is called 
+
+\subsubsection{Message Passing}
+content...
+
+\subsubsection{Graph Pooling}
+content...
+

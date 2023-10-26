@@ -1,0 +1,48 @@
+\chapter{Methodology} \label{chap:meth}
+
+[In this section, you should remind your readers what the focus of your study is, especially the research aims. As we’ve discussed many times on the blog, your methodology needs to align with your research aims, objectives and research questions. Therefore, it’s useful to frontload this component to remind the reader (and yourself!) what you’re trying to achieve.]
+
+some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction some introduction 
+\section{Problem Formulation}
+
+
+\section{Research Methodology}
+
+To achieve our research objectives, we will use the following methodology:
+
+\subsection{Dataset}
+We will use benchmark datasets for regression and classification tasks that are commonly used in the literature. Specifically, we will use the datasets mentioned as benchmarks for tabular data in the work of Grinsztajn (2022) to ensure comparability with existing studies. We will also preprocess the data to handle missing values and normalize the features. Moreover, we also use synthetic datasets to be able to control the condition of interactions and missing values.
+
+\subsection{Graph Construction} \label{construction}
+Given a table of data $ T \in \R^{n\times p} $ containing $ n $ instances (rows) and each instance has $ p $ attributes (columns). 
+As depicted in Figure \ref{graph experiment}, the transformed graph of instance $ i \in \{1,2,\dots,n\} $ is the graph $ G_i = (V_{G_i},E_{G_i}) $ whose nodes $ V_{G_i} = (F_1,\dots,F_p) $ correspond to feature fields of the table.
+We call this graph a \textbf{feature graph}. 
+The feature interactions are represented by edges.
+
+In this work, defining $E_{G_i}$ explicitly remains an open and under-explored question. As the ground-truth of feature interaction is typically unknown in real-world scenarios, we aim to create a model capable of learning feature interaction from the complete feature graph ($E_{G_i} = V_{G_i} \times V_{G_i}$) to enhance interpretability.
+
+\begin{figure*}[h]
+	\centering
+%	\includegraphics[width=0.6\linewidth]{graph experiment}
+	\caption{an example of construction of graphs from tabular data}
+	\label{graph experiment}
+\end{figure*}
+
+\subsection{Model Design}
+We will develop a novel GNN-based framework that takes datapoint-wise graphs as input. We will use PyTorch \cite{PyTorch} and PytorchGeometric \cite{PyG} to implement our proposed framework. The model will include attention mechanisms to identify important features and handle missing data.
+We will implement our proposed GNN framework and compare its performance with various baselines, including existing deep learning models and traditional machine learning models.
+
+\subsection{Performance Evaluation}
+We will use Mean Squared Error (MSE) as the evaluation metric for regression tasks and metrics from confusion matrices (e.g., accuracy, precision, recall, F1-score) as the evaluation metric for classification tasks. We will compare the performance of our proposed framework with existing deep learning-based models and traditional machine learning models.
+
+We will conduct experiments to evaluate the performance of our proposed framework on benchmark datasets. Specifically, we will compare the performance of our proposed framework both without missing data and with missing data with the following models:
+\begin{itemize}
+	\item Deep learning-based models: MLP (Multilayer Perceptron), CNN (Convolutional Neural Network), and DNN (Deep Neural Network).
+	\item Traditional machine learning models: Random Forest, Gradient Boosting Machine, and Support Vector Machine.
+	We will use five-fold cross-validation to ensure the reliability of the results.
+	\item Graph-based deep models: GRAPE \cite{GRAPE}, Fi-GNN \cite{FiGNN}, Table2Graph \cite{Table2Graph}
+\end{itemize}
+%\subsubsection{Statistical Analysis}
+%	We will use statistical analysis (e.g., t-test) to compare the performance of our proposed framework with existing models. We will also conduct ablation studies to analyze the contribution of different components in our proposed framework.
+
+\section{Research Framework}
